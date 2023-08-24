@@ -1,0 +1,22 @@
+  local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Orion/main/source'))()
+
+local Window = OrionLib:MakeWindow({Name = "Von Script"})
+ 
+local Tab = Window:MakeTab({
+  Name = "Main",
+  Icon = "rbxassetid://4483345998"
+})
+ 
+Tab:AddToggle({
+  Name = "AutoHatchWith8Eggs",
+  Default = false,
+  Callback = function(Value)
+    AutoHatchWith8Eggs = Value
+    while AutoHatchWith8Eggs and task.wait() do
+    local args = {
+       [1] = "Cupcake Egg!"
+       }
+    game:GetService("ReplicatedStorage").EggEvents.Hatch8:FireServer(unpack(args))
+    end
+  end
+})    
